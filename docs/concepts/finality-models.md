@@ -16,10 +16,13 @@ A taxonomy of finality across chains. The most common indexer bug across chains 
 
 ## Per-chain finality
 
-Each chain doc has a `reorgs-finality.md` file that restates the model in chain-specific terms. The full cross-reference table will be added here once 3+ chains are deeply documented.
+Each chain doc has a `reorgs-finality.md` file that restates the model in chain-specific terms. The cross-chain comparison table — including soft / safe / final tier names, typical lag, and reorg-depth distribution — lives in [`finality-cross-chain.md`](./finality-cross-chain.md).
 
 - [Ethereum](../chains/ethereum/reorgs-finality.md)
-- ... (others to be added)
+- [Optimism](../chains/optimism/reorgs-finality.md)
+- [Arbitrum](../chains/arbitrum/reorgs-finality.md)
+- [Base](../chains/base/reorgs-finality.md)
+- (others pending per-chain population)
 
 ## Common pitfalls
 
