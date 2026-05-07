@@ -28,7 +28,7 @@ EVM · ZK-EVM · non-EVM. Node architectures, finality models, RPC surfaces, for
 |:--|:--|:--:|
 | [Ethereum](docs/chains/ethereum) | EVM L1 | `in-progress` |
 | [Optimism](docs/chains/optimism) | EVM L2 (OP Stack rollup) | `in-progress` |
-| [Arbitrum](docs/chains/arbitrum) | EVM L2 (Nitro rollup) | `stub` |
+| [Arbitrum](docs/chains/arbitrum) | EVM L2 (Nitro rollup) | `in-progress` |
 | [Base](docs/chains/base) | EVM L2 (OP Stack rollup) | `in-progress` (delta on optimism/) |
 | [BSC](docs/chains/bsc) | EVM sidechain (PoSA) | `stub` |
 | [Polygon](docs/chains/polygon) | EVM sidechain (PoS, checkpointed) | `stub` |
