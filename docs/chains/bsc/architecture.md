@@ -7,9 +7,9 @@ PoSA (Proof of Staked Authority) — a hybrid of PoA (Proof of Authority, like C
 | Property | Value |
 |---|---|
 | Consensus algorithm | Parlia (PoSA) |
-| Active validator set | 21 per epoch (post-BEP-131 expansion to ~41 candidates {{unsourced: verify current cap}}) |
-| Epoch length | 200 blocks {{unsourced: confirm}} |
-| Block time | 3 s (original); reducing toward 1.5 s post-Lorentz {{unsourced: confirm current value}} |
+| Active validator set | 21 active per epoch + 20 candidate (backup) validators = 41 total ([BEP-131](https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP131.md)) |
+| Epoch length | 200 blocks (Parlia default) |
+| Block time | 3 s (genesis–Lorentz); reduced toward 1.5 s post-Lorentz (Lorentz activation: 2025-04-29 05:05:00 UTC, [BSCChainConfig](https://github.com/bnb-chain/bsc/blob/master/params/config.go)) |
 | Block proposer | Round-robin among active validators within an epoch |
 | Out-of-turn proposer | Allowed with reduced "difficulty" — provides liveness during proposer absence |
 
@@ -24,7 +24,7 @@ No protocol finality. Reorg risk reduces with depth, but no formal guarantee. Em
 - **Reorgs of 10–15+ blocks** happened during validator outages or network issues.
 - The conventional indexer wisdom was "wait 15 blocks for safety."
 
-### Post-Plato (BEP-126, 2023 {{unsourced: confirm activation date}})
+### Post-Plato ([BEP-126](https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP126.md), block 30,720,096 — see [BSCChainConfig](https://github.com/bnb-chain/bsc/blob/master/params/config.go))
 
 **Fast finality.** Validators sign blocks with BLS keys and aggregate. Block N is **justified** when 2/3+ of the active validator set have signed it. Two consecutive justified blocks **finalize** the older one.
 
@@ -36,7 +36,7 @@ No protocol finality. Reorg risk reduces with depth, but no formal guarantee. Em
 
 This is **structurally similar to Ethereum's Casper FFG**, with a much smaller validator set and faster cadence.
 
-`bsc` exposes `eth_getBlockByNumber("safe")` and `eth_getBlockByNumber("finalized")` from the Plato fork onward {{unsourced: confirm}}.
+`bsc` exposes `eth_getBlockByNumber("safe")` and `eth_getBlockByNumber("finalized")` from the Plato fork onward (per [BEP-126 §4 Specification](https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP126.md)).
 
 ## Validator rotation
 

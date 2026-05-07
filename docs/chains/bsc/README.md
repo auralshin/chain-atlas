@@ -10,7 +10,7 @@
 - **EVM-equivalent at execution.** Standard ETH RPC. Standard tx types. Standard receipts.
 - **PoSA consensus.** ~21 active validators per epoch, rotating from a candidate set of ~41. Validators take turns producing blocks.
 - **Fast finality (BEP-126 / Plato fork).** Pre-Plato, BSC had no protocol-level finality — indexers used 15-block heuristics. Post-Plato, BSC has Casper-FFG-style finality at ~2 blocks.
-- **Block time has changed.** Originally 3 seconds, reduced toward 1.5s post-Lorentz / Maxwell upgrades {{unsourced: confirm current value}}.
+- **Block time has changed.** 3 seconds from genesis through the Lorentz fork (2025-04-29), reduced toward 1.5 s thereafter. See [forks-changelog.md](forks-changelog.md) for activation timestamps from `BSCChainConfig`.
 - **Validator-collusion incidents are real.** The 2022 Cube DAO / cross-chain bridge exploit and follow-on validator response events shape current operational thinking. Indexers should not assume the validator set is honest.
 - **BNB Beacon Chain (BC) is deprecated.** The cross-chain layer that originally separated BC from BSC has been retired. Indexers no longer need to track BC for cross-chain state.
 

@@ -5,7 +5,7 @@
 - **bsc** (client) — [github.com/bnb-chain/bsc](https://github.com/bnb-chain/bsc) — geth fork, single binary.
 - **Parlia consensus** — [github.com/bnb-chain/bsc/tree/develop/consensus/parlia](https://github.com/bnb-chain/bsc/tree/develop/consensus/parlia) — PoSA consensus engine. Authoritative for `extraData` parsing.
 - **System contracts** — [github.com/bnb-chain/bsc-genesis-contract](https://github.com/bnb-chain/bsc-genesis-contract) — `ValidatorContract`, `SlashContract`, `SystemRewardContract`, etc.
-- **StakeHub (post-fusion)** — [github.com/bnb-chain/bsc-genesis-contract](https://github.com/bnb-chain/bsc-genesis-contract) {{unsourced: confirm path}} — post-2024 native staking.
+- **StakeHub (post-fusion)** — [github.com/bnb-chain/bsc-genesis-contract](https://github.com/bnb-chain/bsc-genesis-contract) — post-fusion (2024) native staking.
 
 ## BEPs (specifications)
 
@@ -28,7 +28,7 @@
 ## Operational
 
 - **BNB Chain Status** — [status.bnbchain.org](https://status.bnbchain.org/).
-- **Validator dashboard** — [bscscan.com/validators](https://bscscan.com/validators) {{unsourced: confirm URL}}.
+- **Validator dashboard** — [bscscan.com/validators](https://bscscan.com/validators).
 - **Public RPC** — `https://bsc-dataseed.bnbchain.org/` and round-robin alternatives. Rate-limited.
 
 ## Historical incidents

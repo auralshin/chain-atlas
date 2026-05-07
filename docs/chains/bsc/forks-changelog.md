@@ -4,32 +4,51 @@ BSC's upgrade history is documented as a series of BEPs (BNB Evolution Proposals
 
 ## Major upgrades
 
-| Upgrade | Date | BEP | Indexer impact |
-|---|---|---|---|
-| **Genesis** | 2020-09-01 | — | Block 0. |
-| **Bruno** | {{unsourced: 2021}} | BEP-95 | Burns a portion of gas fees. Affects fee accounting. |
-| **Euler** | {{unsourced: 2021/2022}} | — | EIP-1108, EIP-1884 — gas cost adjustments. |
-| **Gibbs** | {{unsourced}} | — | EIP-3855 (PUSH0) and other Shanghai-equivalent. |
-| **Moran** | {{unsourced: post-Cube-DAO 2022}} | — | Stricter validator behavior, anti-collusion guards. Indexer impact: validator-set semantics tightened. |
-| **Nano** | {{unsourced}} | — | Bug fixes. |
-| **Plato** | {{unsourced: 2023}} | **BEP-126** | **Fast finality.** BLS-aggregated voting. `safe`/`finalized` block tags become meaningful. **Most important upgrade for indexers** since genesis. |
-| **Hertz** | {{unsourced: 2023}} | — | Ethereum Berlin/London-equivalent: EIP-1559, EIP-2930. (BSC adopted London-equivalent late.) |
-| **Tycho** | {{unsourced: 2024}} | — | Cancun-equivalent: blob support (used by opBNB), transient storage, MCOPY, beacon-root. {{unsourced: confirm — BSC may have adopted differently}} |
-| **Pascal** | {{unsourced: 2024}} | — | Continued Ethereum-equivalence work. |
-| **Lorentz** | {{unsourced: 2024-2025}} | — | **Block time reduction** toward 1.5s. Affects "blocks per hour" assumptions. |
-| **Maxwell** | {{unsourced: 2025}} | — | Further cadence / consensus tuning. |
+Activation block heights and timestamps below are taken verbatim from the canonical `BSCChainConfig` in [`bnb-chain/bsc/params/config.go`](https://github.com/bnb-chain/bsc/blob/master/params/config.go). The earlier (height-based) forks pinned to a block height; later (time-based) forks pinned to a Unix timestamp.
 
-Always pull current fork heights from the `bsc` chain config (`genesis.json` or `BscChainConfig`) at runtime.
+### Height-activated forks (pre-Shanghai)
+
+| Upgrade | Block height (mainnet) | BEP | Indexer impact |
+|---|---|---|---|
+| **Genesis** | 0 | — | 2020-09 launch. |
+| **MirrorSync** | 5,184,000 | — | Cross-chain bridge sync. |
+| **Bruno** | 13,082,000 | [BEP-95](https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP95.md) | Real-time burning of a portion of gas fees. |
+| **Euler** | 18,907,621 | — | EIP-1108, EIP-1884 — gas cost adjustments. |
+| **Nano** | 21,962,149 | — | Bug fixes. |
+| **Moran** | 22,107,423 | — | Post-Cube-DAO validator behavior tightening. |
+| **Gibbs** | 23,846,001 | — | Shanghai-equivalent EVM changes (PUSH0, etc.). |
+| **Planck** | 27,281,024 | — | Operational fixes. |
+| **Luban** | 29,020,050 | — | BLS-related staking infrastructure. |
+| **Plato** | **30,720,096** | **[BEP-126](https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP126.md)** | **Fast finality.** BLS-aggregated voting. `safe`/`finalized` block tags become meaningful. **Most important upgrade for indexers** since genesis. |
+| **Berlin / London / Hertz** | 31,302,048 | — | Ethereum Berlin + London-equivalent at the same height: EIP-1559, EIP-2930, etc. (BSC adopted London-equivalent late.) |
+| **HertzFix** | 34,140,700 | — | Hertz follow-up patch. |
+
+### Time-activated forks (post-Shanghai)
+
+| Upgrade | Activation (UTC) | Equivalent / notes |
+|---|---|---|
+| **Shanghai** / **Kepler** | 2024-01-23 08:00:00 | Ethereum Shanghai EVM equivalence. |
+| **Feynman** (+ FeynmanFix) | 2024-04-18 05:49:00 | Validator-set / staking changes related to BC fusion. |
+| **Cancun** / **Haber** | 2024-06-20 06:05:00 | Ethereum Cancun-equivalent: transient storage, MCOPY, beacon-root precompile. (Blob DA path used by opBNB; BSC L1 itself remains calldata.) |
+| **HaberFix** | 2024-09-26 02:02:00 | Haber follow-up patch. |
+| **Bohr** | 2024-09-26 02:20:00 | Consensus-layer adjustments. |
+| **Pascal** / **Prague** | 2025-03-20 02:10:00 | Pectra-equivalent. |
+| **Lorentz** | **2025-04-29 05:05:00** | **Block time reduction** toward 1.5 s. Affects "blocks per hour" assumptions. |
+| **Maxwell** | 2025-06-30 02:30:00 | Further cadence / consensus tuning. |
+| **Fermi** | 2026-01-14 02:30:00 | Continued evolution. |
+| **Osaka** / **Mendel** | 2026-04-28 02:30:00 | Ethereum Osaka-equivalent. |
+
+Always pull current fork heights/times from the `BSCChainConfig` in `params/config.go` at runtime — the values above are pinned to the canonical source as of the anchor date 2026-05-08.
 
 ## Beacon Chain → BSC fusion
 
 Separate from BEP fork timeline:
 
-| Phase | Approximate date | Status |
+| Phase | Date | Status |
 |---|---|---|
-| BEP-333 (BC sunset proposal) | 2023-2024 {{unsourced}} | Approved |
-| StakeHub deployed on BSC | 2024 {{unsourced}} | Native staking begins |
-| BC sunset complete | 2024 {{unsourced: confirm exact date}} | BC deprecated |
+| [BEP-333](https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP333.md) (BC sunset proposal) | Created 2023-11-29 | Status: Enabled (per BEP file header) |
+| Feynman fork (validator-set / staking changes for BC fusion) | 2024-04-18 05:49:00 UTC ([BSCChainConfig](https://github.com/bnb-chain/bsc/blob/master/params/config.go)) | StakeHub becomes the native-staking destination |
+| BC sunset complete | {{unsourced: needs governance forum / blog confirmation}} | BC deprecated |
 
 Indexer impact:
 - **Pre-fusion**: cross-chain bridge contracts (`TokenHub`, `RelayerHub`, etc.) are active. Substantial event volume.

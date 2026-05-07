@@ -48,7 +48,7 @@ Most production indexers that need archive run a self-hosted `bsc` archive node,
 ## Public provider quirks
 
 - **`eth_getLogs` block range limits** are extremely tight on BSC public RPCs — often 500–2000 blocks per call. Plan for many small windows.
-- **Public RPC at `https://bsc-dataseed.bnbchain.org/`** {{unsourced: confirm URL}} — multiple round-robin endpoints; rate-limited; not for serious indexing.
+- **Public RPC at `https://bsc-dataseed.bnbchain.org/`** (JSON-RPC POST endpoint; root GET returns 404 — that's expected) — multiple round-robin endpoints exist; rate-limited; not for serious indexing.
 - **WebSocket reorg behavior**: `eth_subscribe("newHeads")` follows the head. Reorgs surface implicitly via parent-hash mismatch.
 - **`eth_getBlockReceipts`** is supported on most providers; faster than per-tx receipts at scale. Use it.
 - **High request rate**: BSC's high throughput plus tight per-call limits means an indexer makes **many** concurrent requests. Provision connection pools accordingly.

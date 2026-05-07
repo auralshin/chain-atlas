@@ -16,7 +16,7 @@ The active validator set is small (21). The 2022 Cube DAO incident demonstrated 
 
 ## Block time has changed
 
-Pre-Lorentz: 3 seconds. Post-Lorentz: ~1.5 seconds {{unsourced: confirm}}. Indexers that hardcode "blocks per hour" or "blocks per day" estimates from a constant block time are wrong post-Lorentz.
+Pre-Lorentz: 3 seconds. Post-Lorentz (2025-04-29 05:05:00 UTC, per [BSCChainConfig](https://github.com/bnb-chain/bsc/blob/master/params/config.go)): toward 1.5 seconds. Indexers that hardcode "blocks per hour" or "blocks per day" estimates from a constant block time are wrong post-Lorentz.
 
 **Fix:** never hardcode block time. Compute from actual block timestamps for any calendar-time conversion.
 

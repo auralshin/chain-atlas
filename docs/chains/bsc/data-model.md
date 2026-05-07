@@ -20,7 +20,7 @@ Standard Ethereum types only:
 - `0x00` Legacy
 - `0x01` EIP-2930
 - `0x02` EIP-1559 (post-London-equivalent fork)
-- `0x04` EIP-7702 (post-Pectra-equivalent — verify BSC activation {{unsourced}})
+- `0x04` [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702) `SET_CODE_TX_TYPE` — activated on BSC at the Pascal/Prague fork (2025-03-20 02:10:00 UTC, see [BSCChainConfig](https://github.com/bnb-chain/bsc/blob/master/params/config.go))
 
 **No BSC-specific transaction types.** No system tx, no deposit tx.
 
