@@ -55,6 +55,15 @@ EVM · ZK-EVM · non-EVM. Node architectures, finality models, RPC surfaces, for
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). New chains must follow the structure in `docs/chains/_template/`. Every behavioral claim about a chain should be backed by a primary source in `references.md`.
 
+## License
+
+Dual-licensed. See [LICENSE](LICENSE) for full text.
+
+- **Prose, tables, diagrams** — [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/). Reuse freely with attribution.
+- **Code samples (Rust blocks, etc.)** — [MIT](https://opensource.org/licenses/MIT). Copy into your indexer; just keep the notice.
+
+Copyright © 2026 auralshin.
+
 <div align="center">
 <sub>Built as a reference for engineers writing their first indexer for a given chain. Not a tutorial. Not a runtime.</sub>
 </div>

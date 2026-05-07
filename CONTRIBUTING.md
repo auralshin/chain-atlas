@@ -40,3 +40,9 @@ Do **not** include unrelated dependency setup, CLI argument parsing, or producti
 - One file per concern. Do not merge `architecture.md` and `data-model.md` even if it feels redundant.
 - Write for someone building their first indexer for this chain — assume they know Ethereum but not your chain.
 - Date format: `YYYY-MM-DD`. Always absolute, never relative.
+
+## Licensing of contributions
+
+This repo is dual-licensed: prose under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/), code under [MIT](https://opensource.org/licenses/MIT). See [LICENSE](LICENSE) for the full text.
+
+**By opening a pull request, you agree that your contribution is licensed under the same terms** — your prose under CC-BY-4.0, your code under MIT. You retain copyright; you grant the project (and its readers) the rights those licenses describe. If you can't agree to that for some part of your change, flag it in the PR.
