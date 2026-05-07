@@ -1,0 +1,42 @@
+# chain-atlas
+
+A research guide to building blockchain indexers correctly across EVM, ZK-EVM, and non-EVM chains.
+
+This is **not** a runtime. There are no production indexers in this repo. It is a reference: each chain's node architecture, finality model, RPC surface, fork history, storage tradeoffs, and the gotchas that bite indexer authors. Code blocks (Rust) illustrate patterns; they are not meant to compile as a single binary.
+
+## Layout
+
+- [`docs/concepts/`](docs/concepts) — cross-chain ideas: finality models, reorgs, storage tradeoffs, trace APIs, proxy resolution. Cited from every chain doc.
+- [`docs/chains/`](docs/chains) — per-chain deep dives. Every chain follows the same template.
+- [`docs/chains/_template/`](docs/chains/_template) — canonical structure. Read this first if contributing.
+
+## Chain status
+
+| Chain | Family | Status |
+|---|---|---|
+| [Ethereum](docs/chains/ethereum) | EVM L1 | in-progress (template target — pending review) |
+| [Optimism](docs/chains/optimism) | EVM L2 (OP Stack rollup) | stub |
+| [Arbitrum](docs/chains/arbitrum) | EVM L2 (Nitro rollup) | stub |
+| [Base](docs/chains/base) | EVM L2 (OP Stack rollup) | stub |
+| [BSC](docs/chains/bsc) | EVM sidechain (PoSA) | stub |
+| [Polygon](docs/chains/polygon) | EVM sidechain (PoS, checkpointed) | stub |
+| [zkSync Era](docs/chains/zksync-era) | ZK rollup (custom VM) | stub |
+| [Scroll](docs/chains/scroll) | ZK-EVM rollup | stub |
+| [Linea](docs/chains/linea) | ZK-EVM rollup | stub |
+| [StarkNet](docs/chains/starknet) | ZK rollup (Cairo VM) | stub |
+| [Solana](docs/chains/solana) | non-EVM | stub |
+| [Cosmos](docs/chains/cosmos) | non-EVM family (Tendermint/IBC) | stub |
+| [Aptos](docs/chains/aptos) | non-EVM (Move) | stub |
+| [Sui](docs/chains/sui) | non-EVM (Move, object-centric) | stub |
+
+Status legend: **stub** = placeholder, key facts only · **in-progress** = partial sections written · **deep** = full template populated and reviewed.
+
+## How to use this repo
+
+1. Read `docs/concepts/` to internalize the vocabulary and the cross-chain machinery.
+2. Pick a chain in `docs/chains/`. Start with its `README.md` and walk through the template.
+3. Cross-reference fork events in `forks-changelog.md` against the chain's primary specifications listed in `references.md`.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). New chains must follow the structure in `docs/chains/_template/`. Every behavioral claim about a chain should be backed by a primary source in `references.md`.

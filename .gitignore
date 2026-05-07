@@ -1,0 +1,14 @@
+# Rust (in case skeletons are promoted to compiled crates later)
+target/
+**/*.rs.bk
+Cargo.lock
+
+# Editor
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Local notes
+notes/
+scratch/
