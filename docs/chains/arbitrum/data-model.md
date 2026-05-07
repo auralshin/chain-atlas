@@ -102,4 +102,4 @@ Same MPT as Ethereum, with the ArbOS-specific accounts (precompiles) at the addr
 
 ## Genesis
 
-Nitro's genesis block on Arbitrum One is the migration block from Classic — **block 22207817** {{unsourced: confirm}}. Indexers should treat this as block 0 for Nitro purposes; pre-Nitro Classic blocks are a separate decoder problem.
+Nitro's genesis block on Arbitrum One is the migration block from Classic — **block 22,207,818** (per [`arbitrum_chain_info.json`](https://github.com/OffchainLabs/nitro/blob/master/cmd/chaininfo/arbitrum_chain_info.json) field `chain-config.arbitrum.GenesisBlockNum`). Indexers should treat this as block 0 for Nitro purposes; pre-Nitro Classic blocks are a separate decoder problem.

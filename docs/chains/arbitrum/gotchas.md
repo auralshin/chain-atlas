@@ -53,7 +53,7 @@ Indexers cannot ingest "calls to NodeInterface" because there are no on-chain ca
 
 Pre-2022-08-31 data on Arbitrum One uses the AVM stack. **Cannot be decoded with Nitro tooling.** Indexers that try to stream from genesis end up corrupted.
 
-**Fix:** start streaming at the Nitro genesis block (height 22207817 on Arbitrum One {{unsourced: confirm}}). Skip Classic data entirely, or import a one-time snapshot.
+**Fix:** start streaming at the Nitro genesis block — height **22,207,818** on Arbitrum One (per [`arbitrum_chain_info.json`](https://github.com/OffchainLabs/nitro/blob/master/cmd/chaininfo/arbitrum_chain_info.json)). Skip Classic data entirely, or import a one-time snapshot.
 
 ## Arbitrum One vs Arbitrum Nova vs Orbit chains
 

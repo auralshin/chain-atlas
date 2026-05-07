@@ -9,7 +9,7 @@ Arbitrum has two semi-independent versioning axes: **Nitro stack version** (the 
 | **Classic** | 2021-08-31 → 2022-08-31 | AVM-based, distinct data model. **Out of scope for this guide.** |
 | **Nitro** | 2022-08-31 → present | EVM-equivalent. **This guide covers Nitro+ only.** |
 
-The Classic→Nitro migration on Arbitrum One occurred at L2 block height **22207817** {{unsourced: confirm}}. Most modern indexers ignore Classic data or import a one-time snapshot at the migration height.
+The Classic→Nitro migration on Arbitrum One occurred at L2 block height **22,207,818** (per [`arbitrum_chain_info.json`](https://github.com/OffchainLabs/nitro/blob/master/cmd/chaininfo/arbitrum_chain_info.json) field `chain-config.arbitrum.GenesisBlockNum`). Most modern indexers ignore Classic data or import a one-time snapshot at the migration height.
 
 ## ArbOS versions
 
@@ -27,7 +27,7 @@ ArbOS is the consensus-layer "operating system" that runs inside the Nitro EL. E
 | **31** | {{unsourced: 2024-late}} | Stylus refinements; bug fixes. |
 | **32** | {{unsourced: 2025}} | TBD post-BoLD; Pectra-equivalent porting expected. |
 
-The canonical, per-chain activation timestamps are in [`OffchainLabs/nitro/util/headerreader/upgrade.go`](https://github.com/OffchainLabs/nitro) {{unsourced: confirm path}} and in each chain's onchain configuration via `ArbOwner.getChainParameters` and `ArbOwner.getChainConfig`. Pull at runtime, do not hardcode.
+Per-chain activation timestamps for ArbOS upgrades are not stored in Nitro source — they are applied via on-chain governance through the `ArbOwner` precompile. The canonical static config per chain is [`arbitrum_chain_info.json`](https://github.com/OffchainLabs/nitro/blob/master/cmd/chaininfo/arbitrum_chain_info.json) (records `InitialArbOSVersion` at genesis but not subsequent upgrades). For a live chain, query `ArbSys.arbOSVersion()` at the L2 block of interest, or read the `ArbOwner.getChainConfig()` view. Do not hardcode ArbOS version dates.
 
 ### Per-chain ArbOS timing differs
 
