@@ -1,8 +1,18 @@
+<div align="center">
+
 # chain-atlas
 
-A research guide to building blockchain indexers correctly across EVM, ZK-EVM, and non-EVM chains.
+**A research guide to building blockchain indexers — correctly.**
 
-This is **not** a runtime. There are no production indexers in this repo. It is a reference: each chain's node architecture, finality model, RPC surface, fork history, storage tradeoffs, and the gotchas that bite indexer authors. Code blocks (Rust) illustrate patterns; they are not meant to compile as a single binary.
+EVM · ZK-EVM · non-EVM. Node architectures, finality models, RPC surfaces, fork timelines, storage tradeoffs, and the gotchas that bite indexer authors.
+
+[**Concepts**](docs/concepts) · [**Chains**](docs/chains) · [**Template**](docs/chains/_template) · [**Contributing**](CONTRIBUTING.md)
+
+</div>
+
+---
+
+> **Not a runtime.** There are no production indexers in this repo. It is a reference. Code blocks (Rust) illustrate patterns; they are not meant to compile as a single binary.
 
 ## Layout
 
@@ -12,24 +22,28 @@ This is **not** a runtime. There are no production indexers in this repo. It is 
 
 ## Chain status
 
-| Chain | Family | Status |
-|---|---|---|
-| [Ethereum](docs/chains/ethereum) | EVM L1 | in-progress (template target — pending review) |
-| [Optimism](docs/chains/optimism) | EVM L2 (OP Stack rollup) | stub |
-| [Arbitrum](docs/chains/arbitrum) | EVM L2 (Nitro rollup) | stub |
-| [Base](docs/chains/base) | EVM L2 (OP Stack rollup) | stub |
-| [BSC](docs/chains/bsc) | EVM sidechain (PoSA) | stub |
-| [Polygon](docs/chains/polygon) | EVM sidechain (PoS, checkpointed) | stub |
-| [zkSync Era](docs/chains/zksync-era) | ZK rollup (custom VM) | stub |
-| [Scroll](docs/chains/scroll) | ZK-EVM rollup | stub |
-| [Linea](docs/chains/linea) | ZK-EVM rollup | stub |
-| [StarkNet](docs/chains/starknet) | ZK rollup (Cairo VM) | stub |
-| [Solana](docs/chains/solana) | non-EVM | stub |
-| [Cosmos](docs/chains/cosmos) | non-EVM family (Tendermint/IBC) | stub |
-| [Aptos](docs/chains/aptos) | non-EVM (Move) | stub |
-| [Sui](docs/chains/sui) | non-EVM (Move, object-centric) | stub |
+<div align="center">
 
-Status legend: **stub** = placeholder, key facts only · **in-progress** = partial sections written · **deep** = full template populated and reviewed.
+| Chain | Family | Status |
+|:--|:--|:--:|
+| [Ethereum](docs/chains/ethereum) | EVM L1 | `in-progress` |
+| [Optimism](docs/chains/optimism) | EVM L2 (OP Stack rollup) | `stub` |
+| [Arbitrum](docs/chains/arbitrum) | EVM L2 (Nitro rollup) | `stub` |
+| [Base](docs/chains/base) | EVM L2 (OP Stack rollup) | `stub` |
+| [BSC](docs/chains/bsc) | EVM sidechain (PoSA) | `stub` |
+| [Polygon](docs/chains/polygon) | EVM sidechain (PoS, checkpointed) | `stub` |
+| [zkSync Era](docs/chains/zksync-era) | ZK rollup (custom VM) | `stub` |
+| [Scroll](docs/chains/scroll) | ZK-EVM rollup | `stub` |
+| [Linea](docs/chains/linea) | ZK-EVM rollup | `stub` |
+| [StarkNet](docs/chains/starknet) | ZK rollup (Cairo VM) | `stub` |
+| [Solana](docs/chains/solana) | non-EVM | `stub` |
+| [Cosmos](docs/chains/cosmos) | non-EVM family (Tendermint/IBC) | `stub` |
+| [Aptos](docs/chains/aptos) | non-EVM (Move) | `stub` |
+| [Sui](docs/chains/sui) | non-EVM (Move, object-centric) | `stub` |
+
+</div>
+
+**Legend** — `stub`: placeholder, key facts only · `in-progress`: partial sections written · `deep`: full template populated and reviewed.
 
 ## How to use this repo
 
@@ -40,3 +54,7 @@ Status legend: **stub** = placeholder, key facts only · **in-progress** = parti
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). New chains must follow the structure in `docs/chains/_template/`. Every behavioral claim about a chain should be backed by a primary source in `references.md`.
+
+<div align="center">
+<sub>Built as a reference for engineers writing their first indexer for a given chain. Not a tutorial. Not a runtime.</sub>
+</div>
