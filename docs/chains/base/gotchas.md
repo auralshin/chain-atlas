@@ -36,7 +36,7 @@ A user withdrawing from Base must call `proveWithdrawalTransaction` on **Base's*
 
 ## Fee revenue goes to Coinbase, partially to OP Collective
 
-Per the superchain agreement {{unsourced: link the L2BEAT or governance writeup}}, Base routes a share of sequencer revenue back to OP Collective. The on-chain accounting for this happens at the vault level (`SequencerFeeVault` etc.) — same predeploys as Optimism, different recipients.
+Per the [August 2023 Base ↔ OP Collective agreement](https://www.optimism.io/blog/welcoming-base), Base contributes the **greater of (2.5% of total sequencer revenue) or (15% of net on-chain sequencer revenue)** to the Optimism Collective. Net = L2 transaction revenue minus L1 data submission costs. In return, Base received the right to earn up to ~118M OP tokens over six years (capped at 9% of votable supply for governance purposes). The on-chain accounting for fee distribution happens at the vault level (`SequencerFeeVault` etc.) — same predeploys as Optimism, different recipients.
 
 For indexers building revenue dashboards, the relevant data is the L2 vault withdrawal txs and their L1 destination — same code path as OP Mainnet, different addresses on the receiving end.
 

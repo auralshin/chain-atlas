@@ -17,18 +17,19 @@ Inherits all references from [optimism/references.md](../optimism/references.md)
 
 Base's L1 contracts have addresses **distinct** from OP Mainnet's. Pull the current canonical set from the superchain-registry. The contract source code is the same OP Stack source as Optimism — only deployment addresses differ.
 
-## Where this doc is incomplete
+## Verified in this pass
 
-The following Base-specific claims carry `{{unsourced}}` markers in this folder:
+- **Fork activation timestamps** Canyon → Isthmus pulled from `base/node` releases and op-geth release notes. Base activates **at the same UTC timestamp as OP Mainnet** for each upgrade.
+- **Coinbase Cloud as sole sequencer / batcher / proposer** — confirmed via Base docs and outage postmortems.
+- **Fee revenue split** — greater of 2.5% sequencer revenue or 15% net on-chain sequencer revenue to OP Collective per the [August 2023 agreement](https://www.optimism.io/blog/welcoming-base).
+- **2023-09-05 outage**: 43 min, internal infrastructure issue. **2025-08-05 outage**: 33 min, Conductor failover misconfig.
 
-- Exact activation timestamps for Canyon, Delta, Ecotone, Fjord, Granite, Holocene, Isthmus on Base mainnet.
-- Coinbase's role and identity as the sole sequencer / proposer / batcher.
-- Fee revenue split between Coinbase and OP Collective.
-- Fault proof rollout timeline on Base.
-- Specific outage incidents and their correspondence to indexer impact.
-- Public RPC URLs and status page URLs.
+## Still incomplete
 
-Verify against the superchain-registry, Base docs, and Coinbase's L2 governance writeups before promoting this doc to `deep`.
+- **Fault proof rollout timeline on Base** — verify against the Base docs at deep-dive time.
+- **Public RPC URLs and status page URLs** — drift-prone; check at deep-dive time.
+- **Jovian fork activation on Base** — assumed same as OP Mainnet's 2025-12-02 16:00:01 UTC, but unverified.
+- **Archive node disk size** — drift-prone; do not pin a GB figure in this doc.
 
 ## Inherited references
 

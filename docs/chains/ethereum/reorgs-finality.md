@@ -18,7 +18,7 @@ Casper FFG. Finalization happens at epoch boundaries when 2/3+ of validators att
 
 Post-Merge (2022-09-15 onward), reorgs of unfinalized blocks happen but are usually 1–2 slots. Multi-slot reorgs cluster around proposer outages, relay misbehavior, or slot-0 missed-block patterns.
 
-A 7-slot reorg occurred 2022-10-25, attributed to mev-boost relay timing edge cases [verify: cite specific incident from ethpandaops or post-mortem]. Reorgs deeper than 2 slots are rare enough that they're individually noteworthy.
+The most-cited multi-slot reorg occurred **2022-05-25 at 08:55 UTC** — a 7-block reorg on the beacon chain attributed to a combination of a late block proposal, a proposer-boost fork-choice update, and the slot-0 timing edge case. ([Barnabé Monnot's analysis](https://barnabe.substack.com/p/pos-ethereum-reorg)) Reorgs deeper than 2 slots are rare enough that they're individually noteworthy.
 
 Pre-Merge (PoW), reorgs were probabilistic. The historical "12 confirmations" rule for high-value transfers is a PoW heuristic and is irrelevant post-Merge — it overshoots head reorg risk and undershoots finality reorg risk.
 

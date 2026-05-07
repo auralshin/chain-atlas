@@ -12,7 +12,11 @@ Base's sequencer is operated by Coinbase Cloud. In practice this has meant:
 
 - **Higher uptime** than typical OP Stack chains historically.
 - **Sequencer reorgs of 1–3 unsafe blocks are still routine** — the same factors that cause unsafe rewinds on OP Mainnet apply.
-- A few public outage incidents have caused longer pauses {{unsourced: cite specific incidents — Base outage 2023-09 is the well-known one}}. During an outage, `safe_l2` continues to advance but `unsafe_l2` does not.
+- Documented outage incidents:
+  - **2023-09-05**: 43-minute block-production halt (first major outage; ~1 month after public mainnet launch). Attributed to internal infrastructure issue.
+  - **2025-08-05**: 33-minute outage caused by Conductor (failover-management tool) routing traffic to a non-production backup sequencer. ([Cointelegraph postmortem](https://cointelegraph.com/news/base-blames-faulty-sequencer-33-minute-network-outage))
+  
+  During an outage, `safe_l2` continues to advance up to whatever was already batched on L1, but `unsafe_l2` does not advance because no new blocks are being produced.
 
 ### L1 reorg cascade depth
 

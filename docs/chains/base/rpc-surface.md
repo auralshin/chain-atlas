@@ -18,4 +18,4 @@ Same as Optimism. `debug_traceBlockByNumber` works on archive `op-geth` / `op-re
 
 ## Archive node disk size
 
-Base's archive footprint grows faster than OP Mainnet's because of higher tx volume. As of writing: {{unsourced: actual GB figure}}. Plan accordingly — most providers' "archive" tier is more expensive for Base than for OP Mainnet.
+Base's archive footprint grows faster than OP Mainnet's because of higher tx volume — by mid-2025, multi-TB and growing. {{unsourced: pin a current GB figure if needed for capacity planning — values drift fast.}} Most providers' "archive" tier is more expensive for Base than for OP Mainnet.

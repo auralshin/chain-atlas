@@ -56,7 +56,7 @@ Highest blast radius first.
 
 **Fix:** Don't cache `eth_getCode` across blocks for accounts that have ever been the authority of a type-`0x04` tx. Treat "is contract" as a per-block property. Maintain a per-address timeline of delegation state if downstream consumers need it.
 
-**Source:** [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702) [verify exact delegation pointer encoding]
+**Source:** [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702). Delegation indicator is 23 bytes: 3-byte prefix `0xef0100` + 20-byte target address. `EXTCODESIZE` returns `23`; `CODESIZE` inside delegated execution returns the size of the actual code at the target.
 
 ---
 

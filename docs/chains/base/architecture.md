@@ -14,7 +14,7 @@ Read [optimism/architecture.md](../optimism/architecture.md). Everything in that
 | L1 SystemConfig | Base-specific |
 | Sequencer | Coinbase Cloud |
 | L1 batcher | Coinbase Cloud |
-| L1 proposer | Coinbase Cloud {{unsourced: confirm operator}} |
+| L1 proposer | Coinbase Cloud |
 
 To resolve the actual L1 contract addresses for Base at runtime, query `op-node`'s `optimism_rollupConfig` or read from the superchain-registry's [`base/mainnet.toml`](https://github.com/ethereum-optimism/superchain-registry).
 

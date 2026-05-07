@@ -43,7 +43,7 @@ The rest are short deltas that point to `optimism/`.
 | Chain ID | 8453 | 10 |
 | Genesis | 2023-07-13 (testnet); 2023-08-09 public | 2021-12 (legacy); 2023-06-06 Bedrock |
 | Pre-Bedrock data | None | Two legacy eras |
-| Sequencer operator | Coinbase | Optimism Foundation {{unsourced: confirm}} |
+| Sequencer operator | Coinbase Cloud | Optimism Foundation |
 | L1 contract addresses | Base-specific deployments | OP-specific deployments |
 | Fault-proof rollout | Scheduled separately | See OP timeline |
-| Fee revenue split | Coinbase + OP Collective (per superchain agreement) {{unsourced}} | OP Collective |
+| Fee revenue split | **greater of (2.5% sequencer revenue) or (15% net on-chain sequencer revenue)** to OP Collective; rest to Coinbase ([2023-08 agreement](https://www.optimism.io/blog/welcoming-base)) | OP Collective |

@@ -69,7 +69,17 @@ Three new header fields: `blobGasUsed`, `excessBlobGas`, `parentBeaconBlockRoot`
 
 **Tx type `0x04`** (set-code, EIP-7702). An EOA can attach contract code for the duration of a transaction via an `authorizationList`. Indexer consequence: an account that returns empty `eth_getCode` at block N can return a delegation pointer at block N+1, then empty again at N+2 — account "type" is no longer a static property.
 
-EIP-7251 raised max effective balance to 2048 ETH; validator-tracking indexers must update consolidation logic. EIP-6110 surfaces validator deposits on the EL via the EIP-7685 *execution requests* framework (not a new tx type) — deposit-contract log events are aggregated into a block-level `executionRequests` field that the CL consumes directly, removing the eth1-data voting flow. EIP-7002 enables execution-layer-triggerable validator exits via the same requests framework. [verify exact request-type encoding]
+EIP-7251 raised max effective balance to 2048 ETH; validator-tracking indexers must update consolidation logic. EIP-6110 surfaces validator deposits on the EL via the EIP-7685 *execution requests* framework (not a new tx type) — deposit-contract log events are aggregated into a block-level `executionRequests` field that the CL consumes directly, removing the eth1-data voting flow. EIP-7002 enables execution-layer-triggerable validator exits via the same requests framework.
+
+The block-level `executionRequests` field is a list of `(type_byte, payload)` entries with canonical type bytes per EIP-7685 plus the individual request EIPs:
+
+| Type byte | Request | EIP | Payload |
+|---|---|---|---|
+| `0x00` | Deposit | EIP-6110 | `(pubkey, withdrawal_credentials, amount, signature, index)` per deposit, concatenated |
+| `0x01` | Withdrawal | EIP-7002 | `(source_address, validator_pubkey, amount)` per withdrawal request |
+| `0x02` | Consolidation | EIP-7251 | `(source_address, source_pubkey, target_pubkey)` per consolidation |
+
+Indexers that ingest validator state must decode these by type byte; the framework is extensible (EIP-7804 adds type `0x03` for credential updates as a future request type).
 
 ### Fusaka (2025-12-03)
 

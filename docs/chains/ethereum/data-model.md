@@ -75,7 +75,7 @@ TxEip7702:
     signature
 ```
 
-After execution, the authority's `code` returns a delegation pointer of the form `0xef0100 || address` [verify: confirm exact encoding against EIP-7702 final text]. The authority is now an EOA-with-code: subsequent calls execute the delegated code with the authority's storage as the execution context.
+After execution, the authority's `code` is set to the 23-byte delegation indicator `0xef0100 || address` (3-byte prefix + 20-byte target address). The authority is now an EOA-with-code: subsequent calls execute the delegated code with the authority's storage as the execution context. Note: `EXTCODESIZE` returns 23 (the indicator length), but `CODESIZE` inside the delegated execution returns the size of the actual code at the target — these intentionally diverge per [EIP-7702 spec](https://eips.ethereum.org/EIPS/eip-7702).
 
 **Indexer consequence:** "is this address a contract?" is no longer a static property. An account that returned empty `eth_getCode` at block N can return a delegation pointer at N+1. Cache invalidation logic must account for this.
 
