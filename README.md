@@ -32,7 +32,7 @@ EVM · ZK-EVM · non-EVM. Node architectures, finality models, RPC surfaces, for
 | [Base](docs/chains/base) | EVM L2 (OP Stack rollup) | `in-progress` (delta on optimism/) |
 | [BSC](docs/chains/bsc) | EVM sidechain (PoSA) | `in-progress` |
 | [Polygon](docs/chains/polygon) | EVM sidechain (PoS, checkpointed) | `in-progress` |
-| [zkSync Era](docs/chains/zksync-era) | ZK rollup (custom VM) | `stub` |
+| [zkSync Era](docs/chains/zksync-era) | ZK rollup (custom VM) | `in-progress` |
 | [Scroll](docs/chains/scroll) | ZK-EVM rollup | `stub` |
 | [Linea](docs/chains/linea) | ZK-EVM rollup | `stub` |
 | [StarkNet](docs/chains/starknet) | ZK rollup (Cairo VM) | `stub` |
