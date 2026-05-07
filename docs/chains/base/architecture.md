@@ -32,7 +32,7 @@ Same as Optimism: 2-second L2 block time, single sequencer, batches posted to L1
 
 Base's fault proof rollout is on its own timeline, **separate** from OP Mainnet's. Both chains use the same `DisputeGameFactory`/Cannon mechanism, but activation dates differ.
 
-Verify the current state at [Coinbase's L2 status page](https://status.base.org/) {{unsourced: confirm URL}} and against the superchain-registry.
+Verify the current state at [Coinbase's L2 status page](https://status.base.org/). Note: Base is not in the canonical superchain-registry — see [references.md](references.md) for where Base's chain parameters actually live.
 
 ## Where Base data lives
 

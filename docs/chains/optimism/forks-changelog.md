@@ -14,19 +14,22 @@ If you need pre-Bedrock data, the canonical recommendation is to load the [pre-B
 
 ## Bedrock-era upgrades
 
+Activation timestamps below are pulled from the canonical [`op.toml` in the superchain-registry](https://github.com/ethereum-optimism/superchain-registry/blob/main/superchain/configs/mainnet/op.toml) — the single source of truth for OP Mainnet hardfork activations.
+
 | Upgrade | L2 activation (OP Mainnet) | Source | Indexer impact |
 |---|---|---|---|
 | **Bedrock** | 2023-06-06 | [Bedrock launch post](https://blog.oplabs.co/introducing-optimism-bedrock/) | Foundational; everything in this guide assumes Bedrock+. |
-| **Regolith** | 2023-06-06 (with Bedrock) {{unsourced}} | Specs | Minor: deposit tx gas accounting fix. Receipt fields stabilized. |
-| **Canyon** | 2024-01-11 {{unsourced: confirm timestamp}} | Specs | Shapella-equivalent: withdrawals on L2 (predeploy), `PUSH0`, fee recipient updates. |
-| **Delta** | 2024-02-22 {{unsourced: confirm timestamp}} | Specs | **Span batches** — new batch encoding that compresses ranges of L2 blocks. Indexers that decode batches must handle both legacy + span. |
-| **Ecotone** | 2024-03-14 | [Ecotone announcement](https://blog.oplabs.co/) {{unsourced: pin URL}} | Cancun-Deneb equivalent: **EIP-4844 blobs** for batch DA, transient storage (TSTORE/TLOAD), MCOPY, BLS precompiles, beacon-block-root precompile. **`op-batcher` switches from calldata to blobs.** |
-| **Fjord** | 2024-07-10 {{unsourced: confirm}} | Specs | **RIP-7212** (P256 secp256r1 verify precompile), **Brotli compression** for batch channels (replaces zlib), FastLZ-based L1 cost function, gas accounting tweaks. |
-| **Granite** | 2024-09-11 {{unsourced: confirm}} | Specs | KZG point-evaluation precompile gas reduction, fault-proof improvements (max-bond, anchor state), bn254 precompile gas changes. |
-| **Holocene** | {{unsourced: 2025 Q1 — verify exact date}} | Specs | **Derivation determinism**: invalid batches no longer halt derivation but are dropped. **Configurable EIP-1559 parameters** per chain. |
-| **Isthmus** | {{unsourced: 2025 — Pectra-equivalent rollout}} | Specs | **EIP-7702** (set-code transactions), other Pectra L1 changes ported to L2. |
+| **Regolith** | 2023-06-06 (with Bedrock) | [Specs: Regolith](https://specs.optimism.io/protocol/regolith/overview.html) | Minor: deposit tx gas accounting fix. Receipt fields stabilized. |
+| **Canyon** | 2024-01-11 17:00:01 UTC | [op.toml](https://github.com/ethereum-optimism/superchain-registry/blob/main/superchain/configs/mainnet/op.toml) | Shapella-equivalent: withdrawals on L2 (predeploy), `PUSH0`, fee recipient updates. |
+| **Delta** | 2024-02-22 00:00:00 UTC | [op.toml](https://github.com/ethereum-optimism/superchain-registry/blob/main/superchain/configs/mainnet/op.toml) | **Span batches** — new batch encoding that compresses ranges of L2 blocks. Indexers that decode batches must handle both legacy + span. |
+| **Ecotone** | 2024-03-14 00:00:01 UTC | [op.toml](https://github.com/ethereum-optimism/superchain-registry/blob/main/superchain/configs/mainnet/op.toml) | Cancun-Deneb equivalent: **EIP-4844 blobs** for batch DA, transient storage (TSTORE/TLOAD), MCOPY, BLS precompiles, beacon-block-root precompile. **`op-batcher` switches from calldata to blobs.** |
+| **Fjord** | 2024-07-10 16:00:01 UTC | [op.toml](https://github.com/ethereum-optimism/superchain-registry/blob/main/superchain/configs/mainnet/op.toml) | **RIP-7212** (P256 secp256r1 verify precompile), **Brotli compression** for batch channels (replaces zlib), FastLZ-based L1 cost function, gas accounting tweaks. |
+| **Granite** | 2024-09-11 16:00:01 UTC | [op.toml](https://github.com/ethereum-optimism/superchain-registry/blob/main/superchain/configs/mainnet/op.toml) | KZG point-evaluation precompile gas reduction, fault-proof improvements (max-bond, anchor state), bn254 precompile gas changes. |
+| **Holocene** | 2025-01-09 18:00:01 UTC | [op.toml](https://github.com/ethereum-optimism/superchain-registry/blob/main/superchain/configs/mainnet/op.toml) | **Derivation determinism**: invalid batches no longer halt derivation but are dropped. **Configurable EIP-1559 parameters** per chain. |
+| **Isthmus** | 2025-05-09 16:00:01 UTC | [op.toml](https://github.com/ethereum-optimism/superchain-registry/blob/main/superchain/configs/mainnet/op.toml) | **EIP-7702** (set-code transactions), other Pectra L1 changes ported to L2. |
+| **Jovian** | 2025-12-02 16:00:01 UTC | [op.toml](https://github.com/ethereum-optimism/superchain-registry/blob/main/superchain/configs/mainnet/op.toml) | Continued Ethereum-equivalence porting; specifics in op-stack specs. |
 
-If you are reading this after **2026-05-08** (the date this guide was last anchored), at least one further upgrade has likely shipped. Check [op-stack/specs](https://specs.optimism.io/) for the canonical list.
+If you are reading this after **2026-05-08** (the date this guide was last anchored), at least one further upgrade may have shipped. Check the [op-stack/specs](https://specs.optimism.io/) and the [superchain-registry](https://github.com/ethereum-optimism/superchain-registry/) for the canonical list.
 
 ## Fault proofs rollout
 

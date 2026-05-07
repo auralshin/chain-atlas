@@ -10,10 +10,10 @@
 ## BEPs (specifications)
 
 - **BEP repo** — [github.com/bnb-chain/BEPs](https://github.com/bnb-chain/BEPs) — canonical proposals.
-- **BEP-126** — Fast finality (Plato). The single most important BEP for indexers.
-- **BEP-95** — Real-time burning a portion of gas fees.
-- **BEP-131** — Discontinue beacon chain {{unsourced: confirm number}}.
-- **BEP-333** — Beacon chain sunset {{unsourced: confirm number}}.
+- **[BEP-126](https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP126.md)** — Fast Finality Mechanism (Plato hardfork). The single most important BEP for indexers.
+- **[BEP-95](https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP95.md)** — Real-time burning of a portion of gas fees.
+- **[BEP-131](https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP131.md)** — Introduce candidate validators (expands active validator set with backups).
+- **[BEP-333](https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP333.md)** — BNB Chain Fusion (decommissions BNB Beacon Chain into BSC; active 2024).
 
 ## Documentation
 
@@ -27,7 +27,7 @@
 
 ## Operational
 
-- **BNB Chain Status** — [status.bnbchain.org](https://status.bnbchain.org/) {{unsourced: confirm URL}}.
+- **BNB Chain Status** — [status.bnbchain.org](https://status.bnbchain.org/).
 - **Validator dashboard** — [bscscan.com/validators](https://bscscan.com/validators) {{unsourced: confirm URL}}.
 - **Public RPC** — `https://bsc-dataseed.bnbchain.org/` and round-robin alternatives. Rate-limited.
 

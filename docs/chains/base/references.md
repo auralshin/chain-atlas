@@ -5,11 +5,11 @@ Inherits all references from [optimism/references.md](../optimism/references.md)
 ## Base-specific specifications
 
 - **Base docs** — [docs.base.org](https://docs.base.org/) — official.
-- **Superchain Registry, Base config** — [github.com/ethereum-optimism/superchain-registry/tree/main/superchain/configs/mainnet](https://github.com/ethereum-optimism/superchain-registry/tree/main/superchain/configs/mainnet) — the canonical chain parameters file. {{unsourced: confirm exact path for `base.toml`}}
+- **Superchain Registry** — [github.com/ethereum-optimism/superchain-registry/tree/main/superchain/configs/mainnet](https://github.com/ethereum-optimism/superchain-registry/tree/main/superchain/configs/mainnet). **Note:** Base is NOT included in the canonical Superchain Registry as of this writing — there is no `base.toml`. Base operates as an OP Stack chain outside the registry; canonical Base chain parameters live in op-node defaults and in [base-org/contract-deployments](https://github.com/base-org/contract-deployments).
 
 ## Operational
 
-- **Base status page** — [status.base.org](https://status.base.org/) {{unsourced: confirm URL}}
+- **Base status page** — [status.base.org](https://status.base.org/)
 - **Basescan explorer** — [basescan.org](https://basescan.org/) — Etherscan-family L2 explorer for Base.
 - **Public RPC** — [mainnet.base.org](https://mainnet.base.org/) — Coinbase-operated, rate-limited; not for production indexing.
 

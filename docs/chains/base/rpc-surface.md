@@ -9,7 +9,7 @@ See [optimism/rpc-surface.md](../optimism/rpc-surface.md).
 Base has higher real-world traffic than most OP Stack chains, which has operational consequences for indexers:
 
 - **`eth_getLogs` block-range limits are tighter on most public providers** for Base than for other OP chains, because the per-block log volume is higher. Plan for smaller windows (often 500–2000 blocks per call on free tiers).
-- **Coinbase-operated public RPC** at [`mainnet.base.org`](https://mainnet.base.org/) {{unsourced: confirm URL}} — has rate limits; not suitable for heavy indexing.
+- **Coinbase-operated public RPC** at [`mainnet.base.org`](https://mainnet.base.org/) — has rate limits; not suitable for heavy indexing.
 - **Self-hosted is recommended** for production indexers due to throughput. Run `op-geth` + `op-node` against a synced Ethereum L1 archive.
 
 ## Trace API availability

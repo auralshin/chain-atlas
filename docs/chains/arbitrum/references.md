@@ -25,11 +25,11 @@ Pull current contract addresses from the Arbitrum docs' "Useful Addresses" page 
 ## Block explorers
 
 - **Arbiscan** — [arbiscan.io](https://arbiscan.io/) — Etherscan-family. Receipts include all Arbitrum-specific fields. Internal txs use `arbtrace_*`.
-- **Nova explorer** — [nova.arbiscan.io](https://nova.arbiscan.io/) {{unsourced: confirm URL}}.
+- **Nova explorer** — [nova.arbiscan.io](https://nova.arbiscan.io/).
 
 ## Operational
 
-- **Arbitrum status** — [status.arbitrum.io](https://status.arbitrum.io/) {{unsourced: confirm URL}}.
+- **Arbitrum status** — [status.arbitrum.io](https://status.arbitrum.io/).
 - **L2BEAT Arbitrum One page** — [l2beat.com/scaling/projects/arbitrum](https://l2beat.com/scaling/projects/arbitrum) — independent monitor; tracks finality state and assertion lag.
 
 ## Where this doc is incomplete

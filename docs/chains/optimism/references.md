@@ -33,7 +33,7 @@ Source: [github.com/ethereum-optimism/optimism/tree/develop/packages/contracts-b
 
 ## Operational dashboards
 
-- **OP Mainnet rollup status** — [optimism.io/status](https://status.optimism.io/) {{unsourced: confirm URL}}
+- **OP Mainnet rollup status** — [status.optimism.io](https://status.optimism.io/)
 - **Etherscan Optimism explorer** — [optimistic.etherscan.io](https://optimistic.etherscan.io/) — L2 explorer; receipts include all OP-specific fields.
 - **Blobscan** — [blobscan.com](https://blobscan.com/) — L1 blobs containing OP batches.
 - **Dispute games dashboard** — TBD — for tracking output-root challenges.
