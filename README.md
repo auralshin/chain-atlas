@@ -33,8 +33,8 @@ EVM · ZK-EVM · non-EVM. Node architectures, finality models, RPC surfaces, for
 | [BSC](docs/chains/bsc) | EVM sidechain (PoSA) | `in-progress` |
 | [Polygon](docs/chains/polygon) | EVM sidechain (PoS, checkpointed) | `in-progress` |
 | [zkSync Era](docs/chains/zksync-era) | ZK rollup (custom VM) | `in-progress` |
-| [Scroll](docs/chains/scroll) | ZK-EVM rollup | `stub` |
-| [Linea](docs/chains/linea) | ZK-EVM rollup | `stub` |
+| [Scroll](docs/chains/scroll) | ZK-EVM rollup | `in-progress` |
+| [Linea](docs/chains/linea) | ZK-EVM rollup | `in-progress` (delta on scroll/) |
 | [StarkNet](docs/chains/starknet) | ZK rollup (Cairo VM) | `stub` |
 | [Solana](docs/chains/solana) | non-EVM | `stub` |
 | [Cosmos](docs/chains/cosmos) | non-EVM family (Tendermint/IBC) | `stub` |
