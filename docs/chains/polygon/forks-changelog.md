@@ -13,18 +13,36 @@ Plasma-era data is generally not indexed alongside PoS data — they're separate
 
 ## Bor (EVM) forks
 
-| Upgrade | Bor fork height | Approx date | Indexer impact |
-|---|---|---|---|
-| **Genesis** | 0 | 2020-05-30 | — |
-| **Berlin** | {{unsourced}} | {{unsourced}} | EIP-2929 gas costs, EIP-2930 access lists |
-| **London** | 23850000 {{unsourced}} | 2022-01-17 {{unsourced}} | **EIP-1559** — base fee, type-2 txs |
-| **Delhi** | {{unsourced}} | {{unsourced}} | Mumbai testnet feature parity |
-| **Indore** | {{unsourced: 2023}} | {{unsourced}} | Production fixes |
-| **Bhilai** | {{unsourced: 2023}} | {{unsourced}} | Shanghai-equivalent: PUSH0 etc. Adds `safe`/`finalized` block tags. |
-| **Napoli** | {{unsourced: 2024}} | {{unsourced}} | Cancun-equivalent: transient storage, MCOPY, beacon root precompile (with caveats — Polygon adapts EIP-4788 differently since there is no L1-style beacon chain). |
-| **Pragati** {{unsourced: name?}} | {{unsourced: 2024-2025}} | {{unsourced}} | Pectra-equivalent EIPs ported. |
+Block heights below are taken verbatim from `BorMainnetChainConfig` in [`maticnetwork/bor/params/config.go`](https://github.com/maticnetwork/bor/blob/develop/params/config.go). Polygon runs **two parallel fork tracks** at the consensus layer: the standard EVM-compatibility forks (Berlin / London / Shanghai / Cancun / Prague), and Bor-specific named forks (Jaipur / Delhi / Indore / Ahmedabad / Bhilai / Rio / Madhugiri / Dandeli / Lisovo / Giugliano). Some pairs activate at the **same** block; some are independent.
 
-Always pull current fork heights from the bor `genesis.json` / chain config or from the [bor releases](https://github.com/maticnetwork/bor/releases).
+### EVM-compatibility forks (`*Block` fields)
+
+| Upgrade | Bor block height | Indexer impact |
+|---|---|---|
+| **Genesis** | 0 | 2020-05-30 launch. |
+| **Istanbul / MuirGlacier** | 3,395,000 | Standard pre-Berlin EVM. |
+| **Berlin** | 14,750,000 | EIP-2929 gas costs, EIP-2930 access lists. |
+| **London** | 23,850,000 | **EIP-1559** — base fee, type-2 txs. (Same height as Bor's Jaipur fork.) |
+| **Shanghai** | 50,523,000 | PUSH0, withdrawal-related EIPs. |
+| **Cancun** | 54,876,000 | Transient storage, MCOPY, beacon-root precompile (Polygon adapts EIP-4788 since it has no L1-style beacon chain). |
+| **Prague** | 73,440,256 | Pectra-equivalent EIPs. (Same height as Bor's Bhilai fork.) |
+
+### Bor-specific named forks (`Bor.<Name>Block` fields)
+
+| Upgrade | Bor block height | Notes |
+|---|---|---|
+| **Jaipur** | 23,850,000 | Coincides with EVM London. |
+| **Delhi** | 38,189,056 | Sprint length 64 → 16; ProducerDelay 6 → 4. |
+| **Indore** | 44,934,656 | Production fixes. |
+| **Ahmedabad** | 62,278,656 | StateSyncConfirmationDelay = 128. |
+| **Bhilai** | 73,440,256 | Coincides with EVM Prague. Adds `safe`/`finalized` block tags. |
+| **Rio** | 77,414,656 | — |
+| **Madhugiri** (+ MadhugiriPro) | 80,084,800 | **Block period 2 s → 1 s.** Affects "blocks per hour" assumptions for all indexers. |
+| **Dandeli** | 81,424,000 | — |
+| **Lisovo** (+ LisovoPro) | 83,756,500 | — |
+| **Giugliano** | 85,268,500 | —
+
+Always pull current fork heights from the bor `genesis.json` / chain config at runtime — values above are pinned to the canonical config as of the anchor date 2026-05-08.
 
 ## Heimdall forks
 

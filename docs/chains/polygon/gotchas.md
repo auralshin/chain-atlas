@@ -84,7 +84,7 @@ Bor block 50,000,000 is **not** related to heimdall block 50,000,000. They have 
 
 ## Block time has changed over time
 
-Polygon's block time has not been constant — it was ~2.2s for years and reduced toward 2s after later upgrades {{unsourced: confirm exact change}}. Indexers computing "blocks per hour" estimates from a hardcoded block time are wrong for historical analysis.
+Polygon's configured `Period` was 2 s from genesis through the Madhugiri fork (block 80,084,800), then 1 s thereafter ([BorMainnetChainConfig](https://github.com/maticnetwork/bor/blob/develop/params/config.go) `Period` map). Empirically observed inter-block gaps were higher than the configured period (~2.2 s on average pre-Madhugiri) due to producer-delay events at sprint boundaries, which themselves were tuned at the Delhi fork (block 38,189,056: ProducerDelay 6 → 4, Sprint 64 → 16). Indexers computing "blocks per hour" from a hardcoded block time are wrong for historical analysis.
 
 **Fix:** never hardcode block time. Compute "X hours of history" by walking back from `eth_blockNumber` using actual block timestamps.
 

@@ -15,14 +15,15 @@ Indexer-relevant: every Polygon node runs **two processes**.
 
 ## Block production: spans and sprints
 
-Validators are elected for a **span** (~6400 blocks {{unsourced: confirm}}). Within a span, block production is split into **sprints** (64 blocks). One validator produces all blocks in a sprint, then production rotates to the next.
+Validators are elected for a **span** (6400 blocks). Within a span, block production is split into **sprints**. One validator produces all blocks in a sprint, then production rotates to the next. Both span and sprint lengths are configurable per chain via heimdall; values below are the BorMainnetChainConfig defaults.
 
 | Parameter | Value |
 |---|---|
-| Block time | ~2 s ({{unsourced: confirmed reduced from 2.2s — verify exact upgrade}}) |
-| Sprint length | 64 blocks |
-| Span length | 6400 blocks {{unsourced: confirm}} |
-| Active validator set | 100+ {{unsourced: actual count varies}} |
+| Block time (period) | 2 s from genesis through Madhugiri (block 80,084,800); 1 s thereafter ([BorMainnetChainConfig](https://github.com/maticnetwork/bor/blob/develop/params/config.go) `Period` map) |
+| Sprint length | 64 blocks (genesis–Delhi); 16 blocks from Delhi (block 38,189,056) onward ([BorMainnetChainConfig](https://github.com/maticnetwork/bor/blob/develop/params/config.go) `Sprint` map) |
+| Span length | 6400 blocks (heimdall default) |
+| ProducerDelay | 6 s (genesis–Delhi); 4 s from Delhi onward ([BorMainnetChainConfig](https://github.com/maticnetwork/bor/blob/develop/params/config.go) `ProducerDelay` map) |
+| Active validator set | Varies; staked validators eligible per epoch via heimdall election. {{unsourced: pin canonical max-active-set value}} |
 | Producer rotation | Per sprint within span |
 
 If the assigned producer for a sprint is offline, the sprint is **skipped** — blocks for that sprint period are not produced. This is part of why bor reorgs deep: late blocks from a missed producer can re-enter the chain.

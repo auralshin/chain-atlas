@@ -18,7 +18,7 @@ Standard Ethereum types only:
 - `0x00` Legacy
 - `0x01` EIP-2930
 - `0x02` EIP-1559 (since Polygon's Delhi/London-equivalent fork)
-- `0x04` EIP-7702 (post-Pectra-equivalent — verify Polygon activation date {{unsourced}})
+- `0x04` [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702) `SET_CODE_TX_TYPE` — activated on bor at the Bhilai/Prague fork (block 73,440,256, see [BorMainnetChainConfig](https://github.com/maticnetwork/bor/blob/develop/params/config.go))
 
 **No Polygon-specific transaction types.** This is a critical difference from OP/Arbitrum: there is no `Deposit` tx type at the EVM level. State syncs do not appear as transactions.
 

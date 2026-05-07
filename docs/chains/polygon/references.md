@@ -4,7 +4,7 @@
 
 - **Bor** — [github.com/maticnetwork/bor](https://github.com/maticnetwork/bor) — geth-fork, EVM execution layer.
 - **Heimdall** — [github.com/maticnetwork/heimdall](https://github.com/maticnetwork/heimdall) — Tendermint-Cosmos consensus layer.
-- **Heimdall-v2** — [github.com/0xPolygon/heimdall-v2](https://github.com/0xPolygon/heimdall-v2) {{unsourced: confirm repo path}} — newer rewrite if present.
+- **Heimdall-v2** — [github.com/0xPolygon/heimdall-v2](https://github.com/0xPolygon/heimdall-v2) — newer rewrite (Cosmos SDK v0.50+).
 
 ## L1 contracts
 
@@ -19,11 +19,11 @@
 ## Block explorers
 
 - **Polygonscan** — [polygonscan.com](https://polygonscan.com/) — Etherscan-family. Standard ETH receipts.
-- **Heimdall explorer** — [polygonscan.com/heimdall](https://polygonscan.com/heimdall) {{unsourced: confirm URL}} — checkpoint and validator views.
+- **Heimdall explorer** — [polygonscan.com/heimdall](https://polygonscan.com/heimdall) — checkpoint and validator views.
 
 ## Operational
 
-- **Polygon Status** — [status.polygon.technology](https://status.polygon.technology/) {{unsourced: confirm URL}}.
+- **Polygon Status** — [status.polygon.technology](https://status.polygon.technology/).
 - **Validator dashboard** — [staking.polygon.technology](https://staking.polygon.technology/) — POL staking UI.
 
 ## Token migration
