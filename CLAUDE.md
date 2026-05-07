@@ -44,7 +44,7 @@ Every chain folder contains the 10 files from `docs/chains/_template/`. **Never 
 Status lifecycle (tracked in root README chain table):
 - `stub` — README only, anchor facts marked **verify in deep dive**, no other files populated.
 - `in-progress` — some template files populated, not yet reviewed.
-- `deep` — all 10 files populated, every behavioral claim cited in `references.md`, user has reviewed.
+- `complete` — all 10 files populated, every behavioral claim cited in `references.md`, user has reviewed. (Previously called `deep` — renamed for clarity.)
 
 Promoting a stub fact into a populated file requires citing a primary source. If you can't find one, mark the claim **`{{unsourced}}`** rather than dropping it — leave the next agent a breadcrumb.
 
@@ -91,7 +91,7 @@ Glamsterdam (EIP-7732 enshrined PBS, etc.) is **scheduled** for H1 2026 — desc
 - When updating a chain's facts, scan `web/lib/*.ts` for stale copies and **flag them in your reply** (don't auto-edit unless asked).
 - When you encounter a `{{unsourced}}` marker and you have a real source, replace it.
 - When a stub's anchor fact looks wrong against current state, flag it — don't silently rewrite.
-- Keep the chain status table in the root README in sync when you promote stub → in-progress → deep.
+- Keep the chain status table in the root README in sync when you promote stub → in-progress → complete.
 
 ## Memory note
 

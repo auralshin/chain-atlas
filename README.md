@@ -26,24 +26,24 @@ EVM · ZK-EVM · non-EVM. Node architectures, finality models, RPC surfaces, for
 
 | Chain | Family | Status |
 |:--|:--|:--:|
-| [Ethereum](docs/chains/ethereum) | EVM L1 | `in-progress` |
-| [Optimism](docs/chains/optimism) | EVM L2 (OP Stack rollup) | `in-progress` |
-| [Arbitrum](docs/chains/arbitrum) | EVM L2 (Nitro rollup) | `in-progress` |
-| [Base](docs/chains/base) | EVM L2 (OP Stack rollup) | `in-progress` (delta on optimism/) |
-| [BSC](docs/chains/bsc) | EVM sidechain (PoSA) | `in-progress` |
-| [Polygon](docs/chains/polygon) | EVM sidechain (PoS, checkpointed) | `in-progress` |
-| [zkSync Era](docs/chains/zksync-era) | ZK rollup (custom VM) | `in-progress` |
-| [Scroll](docs/chains/scroll) | ZK-EVM rollup | `in-progress` |
-| [Linea](docs/chains/linea) | ZK-EVM rollup | `in-progress` (delta on scroll/) |
-| [StarkNet](docs/chains/starknet) | ZK rollup (Cairo VM) | `in-progress` |
-| [Solana](docs/chains/solana) | non-EVM | `in-progress` |
+| [Ethereum](docs/chains/ethereum) | EVM L1 | `complete` |
+| [Optimism](docs/chains/optimism) | EVM L2 (OP Stack rollup) | `complete` |
+| [Arbitrum](docs/chains/arbitrum) | EVM L2 (Nitro rollup) | `complete` |
+| [Base](docs/chains/base) | EVM L2 (OP Stack rollup) | `complete` (delta on optimism/) |
+| [BSC](docs/chains/bsc) | EVM sidechain (PoSA) | `complete` |
+| [Polygon](docs/chains/polygon) | EVM sidechain (PoS, checkpointed) | `complete` |
+| [zkSync Era](docs/chains/zksync-era) | ZK rollup (custom VM) | `complete` |
+| [Scroll](docs/chains/scroll) | ZK-EVM rollup | `complete` |
+| [Linea](docs/chains/linea) | ZK-EVM rollup | `complete` (delta on scroll/) |
+| [StarkNet](docs/chains/starknet) | ZK rollup (Cairo VM) | `complete` |
+| [Solana](docs/chains/solana) | non-EVM | `complete` |
 | [Cosmos](docs/chains/cosmos) | non-EVM family (Tendermint/IBC) | `stub` |
 | [Aptos](docs/chains/aptos) | non-EVM (Move) | `stub` |
 | [Sui](docs/chains/sui) | non-EVM (Move, object-centric) | `stub` |
 
 </div>
 
-**Legend** — `stub`: placeholder, key facts only · `in-progress`: partial sections written · `deep`: full template populated and reviewed.
+**Legend** — `stub`: placeholder, key facts only · `in-progress`: partial sections written · `complete`: all 10 template files populated, fork heights and behavioral claims sourced against canonical chain configs and primary specs.
 
 ## How to use this repo
 
