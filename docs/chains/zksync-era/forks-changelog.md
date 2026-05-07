@@ -6,34 +6,39 @@ zkSync Era versions its **protocol version** (incremented at upgrades) and its *
 
 Each protocol version corresponds to an L1 contract upgrade and L2 system contract upgrade. Indexer-relevant ones:
 
-| Protocol version | Approx date | Indexer impact |
+| Protocol version | Mainnet activation | Indexer impact |
 |---|---|---|
-| **v1**–**v15** {{unsourced: era-pre-Boojum versions}} | 2023-03 → 2023-Q4 | Initial Era; original (non-Boojum) proof system. |
-| **v16** {{unsourced}} | 2023-Q4 / 2024-Q1 | **Boojum upgrade.** New proof system. **Indexer impact: none at the L2 RPC level**, but L1 verifier contract changed; indexers tracking proof-verification events need updated decoders. |
-| **v18**–**v22** {{unsourced}} | 2024 | Successive improvements; minor system contract updates. |
-| **v23** {{unsourced: 2024}} | 2024 | Bridgehub introduced — new L1 contract architecture for ZK Stack chains. **Indexers must update L1 contract addresses.** |
-| **v24** {{unsourced: 2024-2025}} | 2024-2025 | Cancun-equivalent EIPs supported on EraVM; blob DA used for L1 commits. |
-| **v25**+ | 2025+ | Continued upgrades. {{unsourced: track via era-contracts releases}} |
+| **v1–v15** | 2023-03-24 (Era genesis) → 2023-Q4 {{unsourced: pin per-version}} | Initial Era. Original (non-Boojum) PLONK-style proof system. |
+| **v16 (Boojum integration)** | Late 2023 / early 2024 {{unsourced: confirm full activation date}} | **Boojum proof system migration.** L1 verifier contract changed; indexers tracking proof-verification events need updated decoders. L2 RPC unchanged. See "Boojum proof system migration" below. |
+| **v17–v21** | 2024-Q1 → 2024-Q1 {{unsourced: pin per-version}} | Successive improvements; minor system contract updates. |
+| **v22** | 2024 {{unsourced: confirm exact mainnet activation date}} | **EIP-4844 blob DA support.** `pubdataCommitments` field can hold either calldata-encoded pubdata or KZG blob commitments; batch poster begins using blobs. ([source: zkSync developer discussion](https://github.com/zkSync-Community-Hub/zksync-developers/discussions/494)) |
+| **v23** | **Skipped on mainnet.** | Internal-only. zkSync hit issues with v23 and went directly v22 → v24. ([source: zkSync developer discussion #519](https://github.com/zkSync-Community-Hub/zksync-developers/discussions/519)) |
+| **v24** | **2024-06-07** (after delays from initial 2024-05-13 / 2024-05-16 schedule) | **Bridgehub** + **P256Verify precompile** + **blob capacity 2 → 16** + **Validium support** + ecAdd/ecMul/ecPairing precompiles + cold/warm storage cost differentiation. ([source: zkSync developer discussion #519](https://github.com/zkSync-Community-Hub/zksync-developers/discussions/519)) |
+| **v25**+ | 2024-2025 | Continued upgrades. Verify against `era-contracts` release tags ([latest as of 2025-12-11: zkos-v0.30.2](https://github.com/matter-labs/era-contracts/releases)). {{unsourced: enumerate v25/v26/v27 mainnet activations}} |
 
-Always pull current protocol version from `zks_getMainContract` / `Bridgehub` queries.
+Always pull current protocol version from `zks_getMainContract` / `Bridgehub` queries against L1 at runtime.
 
 ## Boojum proof system migration
 
-The single biggest under-the-hood change. Pre-Boojum and post-Boojum produce the same L2 state from the same inputs (it's just a faster/cheaper prover) — but the L1 verifier contract is **different**. An L1-aware indexer that decodes verification events must handle both eras.
+The biggest under-the-hood change in Era's history. Pre-Boojum used PLONK-style SNARKs requiring 100-GPU clusters with 80 GB RAM each; Boojum is STARK-based and runs on consumer GPUs with 16 GB RAM ([source: The Block](https://www.theblock.co/post/239880/zksync-launches-new-proof-system-called-boojum-for-era-mainnet)).
 
-L2 RPC behavior is unchanged across the migration; standard `eth_*` and `zks_*` work identically.
+Rollout phases:
+- **2023-07-17**: Boojum activated on mainnet in **shadow-proof mode** — generated and verified proofs alongside the legacy system using real production data, but the legacy system remained authoritative.
+- **Late 2023 / early 2024 {{unsourced: confirm date}}**: Full migration; Boojum becomes the canonical prover and the legacy verifier is sunset.
 
-## Bridgehub introduction (v23)
+For an indexer, the L2 RPC behavior is **unchanged** across the migration — same blocks, same txs, same state. The L1 verifier contract is **different**, so any indexer that decodes proof-verification events must handle both eras.
+
+## Bridgehub introduction (v24)
 
 Pre-Bridgehub: each ZK Stack chain had its own deposit/withdrawal contracts on L1.
-Post-Bridgehub: a single `Bridgehub` on L1 routes deposits/withdrawals to the correct chain via `chainId`.
+Post-Bridgehub (mainnet 2024-06-07): a single `Bridgehub` on L1 routes deposits/withdrawals to the correct chain via `chainId`.
 
 Indexer impact for Era specifically:
-- **Old deposit events** are at the per-chain Mailbox / Bridge addresses.
-- **New deposit events** are at the Bridgehub.
-- A chain-history indexer must read from **both** for the migration period.
+- **Old deposit events** are at the per-chain Mailbox / Bridge addresses (pre-2024-06-07).
+- **New deposit events** flow through Bridgehub (post-2024-06-07).
+- A chain-history indexer covering both eras must read from **both** for the migration period.
 
-For non-Era ZK Stack chains: the Bridgehub-routed flow is the only flow.
+For non-Era ZK Stack chains (Hyperchains): the Bridgehub-routed flow is the only flow they've ever had.
 
 ## Native AA evolution
 
@@ -47,10 +52,11 @@ Native AA has been present since Era genesis. Key indexer-relevant changes over 
 
 | Era | DA mode | Indexer impact |
 |---|---|---|
-| Pre-blob | Calldata to L1 | Each batch posts as a single L1 calldata blob. Indexer decodes from L1 tx input. |
-| Post-blob {{unsourced: protocol version}} | EIP-4844 blobs | Batch data lives in L1 blobs; indexer must fetch from beacon chain. |
+| Pre-v22 | Calldata to L1 | Each batch posts pubdata as a single L1 calldata blob. Indexer decodes from L1 tx input. ~125 KB cap per batch. |
+| **v22** (2024 {{unsourced: pin exact mainnet activation}}) | **EIP-4844 blobs (2 per batch)** | Batch data lives in L1 blobs; indexer must fetch from beacon chain (≤ 18-day blob retention) or use a blob archive. The `CommitBatchInfo.pubdataCommitments` field holds KZG blob commitments. |
+| **v24** (2024-06-07) | **EIP-4844 blobs (up to 16 per batch)** | Same decoder; higher per-batch capacity. Single L2 batch can now reference up to 16 blobs. |
 
-This mirrors OP Stack's pre/post-Ecotone migration.
+This mirrors OP Stack's pre/post-Ecotone migration in spirit but the field-level encoding is zkSync-specific.
 
 ## What an indexer must do per upgrade
 

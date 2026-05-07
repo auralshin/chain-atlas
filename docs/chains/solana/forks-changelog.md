@@ -27,7 +27,10 @@ Track active features against [`solana-foundation/specs`](https://github.com/sol
 | **Token-2022 launch** | ~2023 | New SPL token program with extensions (transfer fees, confidential transfers, etc.). **Indexers must add Token-2022 alongside SPL Token.** |
 | **`set_compute_unit_price` instruction** | ~2022 | Priority fee market emerges; indexers track per-tx CU price. |
 | **Locked stake activation reformat** | {{unsourced}} | Internal; minor impact on Stake program decoders. |
-| **Partitioned Epoch Rewards** | {{unsourced: 2024 mainnet activation epoch — confirm against `feature_set.rs`}} | **SIMD-0118**; feature gate `enable_partitioned_epoch_reward` ({{unsourced: confirm exact gate name}}). **Staking-reward distribution moves from a single epoch-boundary block to a window of consecutive slots.** Detailed below. |
+| **SIMD-0033 (Timely Vote Credits)** | 2024 (governance vote ended at end of epoch 599 with 51.75% YES) | **Validator vote-reward calculation changes** — vote credits now scale with vote latency, not just vote correctness. Indexers building per-validator reward dashboards should not assume "1 correct vote = 1 credit" post-activation. ([SIMD-0033](https://github.com/solana-foundation/solana-improvement-documents/blob/main/proposals/0033-timely-vote-credits.md)) |
+| **Partitioned Epoch Rewards** | 2024 mainnet (epoch {{unsourced: pin}}) | **SIMD-0118**; feature gate `enable_partitioned_epoch_reward`. **Staking-reward distribution moves from a single epoch-boundary block to a window of consecutive slots.** Detailed below. |
+| **SIMD-0096 (100% priority fees to validators)** | **Mainnet activation: February 2025** (passed governance May 2024 with 77% approval) | **Pre-feature: 50% of priority fees were burned, 50% paid to validator. Post-feature: 100% to validator.** **Indexers tracking burn rates or validator revenue must change formulas at activation epoch.** Pre-activation a tx with `priority_fee = X` burned `X/2` SOL; post-activation it burns 0. ([SIMD-0096](https://github.com/solana-foundation/solana-improvement-documents/blob/main/proposals/0096-reward-collected-priority-fee-in-entirety.md), [The Block](https://www.theblock.co/post/296932/solana-validators-to-receive-full-priority-fees-as-simd-0096-proposal-gains-approval)) |
+| **SIMD-0123 (auto priority-fee distribution to stakers)** | Approved March 2025; activation {{unsourced: pin epoch}} | Automates on-chain split of priority fees between validators and SOL stakers. **Indexers attributing per-staker fee-revenue need to add the SIMD-0123 distribution stream alongside staking inflation rewards.** |
 | **Agave 1.18 / 2.x** | 2024+ | Anza forks `solana-labs/solana` → `agave`. **Validator software change**; protocol ABI is stable but Geyser plugin compatibility may change. |
 | **Firedancer (Frankendancer) partial deploy** | 2024–2025 | Jump's high-performance validator. Uses same Solana protocol; no indexer-data impact, but RPC providers' performance / reliability profiles differ. |
 
@@ -90,6 +93,22 @@ The Anza proposal describes a fixed 32-slot partition window. Tickets and refere
 3. **Cross-check**: track the maximum offset at which staking rewards appear per epoch. If you ever see rewards at offset > 400, **widen the window further** — silent under-counting otherwise.
 4. **Aggregate per stake account / per validator** across all blocks in the window. The total per stake-account-per-epoch should match the validator's reward × the account's relative stake.
 5. **Reward-attribution caveat**: at the moment of distribution, the staker authority on the stake account determines who is credited. If authority was transferred between the reward epoch and the distribution slot, attribution can diverge from "the entity who delegated." See [gotchas.md](gotchas.md) for the historical-reconstruction pattern.
+
+### SIMD-0096: priority fees go fully to validator (Feb 2025)
+
+A subtle indexer-breaking change for fee-revenue and supply-tracking dashboards.
+
+| Era | Priority fee distribution |
+|---|---|
+| **Pre-SIMD-0096** (genesis → Feb 2025) | 50% paid to validator (block leader), **50% burned** (subtracted from circulating supply) |
+| **Post-SIMD-0096** (Feb 2025+) | **100% paid to validator**, 0% burned |
+
+For indexers building:
+- **Validator revenue dashboards**: pre/post-activation, the validator-side share doubles for the same priority fee. Don't compare revenue across the boundary without accounting for this.
+- **SOL supply / burn tracking**: pre-SIMD-0096, priority fees were a real burn channel reducing circulating supply. Post-activation, this burn channel is gone — supply grows faster relative to inflation alone.
+- **MEV / tip analytics**: the relative incentive for validators to include high-priority-fee txs is now larger. Behavioral changes in tx ordering / inclusion likely follow the activation date.
+
+Aggregate "total fees paid by users" remains unchanged — only the destination shifted.
 
 ### Agave / Firedancer split
 
