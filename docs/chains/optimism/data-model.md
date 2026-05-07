@@ -25,7 +25,7 @@ Same fields as an Ethereum execution block, **plus**:
 | `EIP-1559` | `0x02` | User | Default for most wallets. |
 | `EIP-4844` | `0x03` | **Not on L2.** | Blobs are an L1-only construct in OP Stack. |
 | **`Deposit`** | `0x7E` | **System** | OP Stack-specific. See below. |
-| `EIP-7702` | `0x04` | User | After Isthmus. {{unsourced: confirm}} |
+| `EIP-7702` | `0x04` | User | Activated at the Isthmus fork (2025-05-09 16:00:01 UTC, see [forks-changelog.md](forks-changelog.md)). Tx type `0x04` per [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702) (`SET_CODE_TX_TYPE`). |
 
 ### Deposit transaction (0x7E)
 

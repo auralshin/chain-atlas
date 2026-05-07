@@ -10,7 +10,7 @@ OP Stack network upgrades, listed in order. Each upgrade has an L1 *and* L2 acti
 | **OVM 2.0** | 2021-11 → 2023-06-06 | Geth-equivalent VM under a translator. Distinct receipts, distinct tx types. **Out of scope for this guide.** |
 | **Bedrock+** | 2023-06-06 → present | EVM-equivalent execution, deposit tx type, derivation pipeline. **This guide covers this era.** |
 
-If you need pre-Bedrock data, the canonical recommendation is to load the [pre-Bedrock historical archive](https://blog.oplabs.co/introducing-optimism-bedrock/) {{unsourced: verify URL}} as a one-time snapshot and start streaming from Bedrock activation.
+If you need pre-Bedrock data, the canonical recommendation is to load the [pre-Bedrock historical archive](https://blog.oplabs.co/introducing-optimism-bedrock/) as a one-time snapshot and start streaming from Bedrock activation.
 
 ## Bedrock-era upgrades
 
